@@ -1,0 +1,12 @@
+.card-list{
+    position: relative;
+    display:inline-block;
+}
+
+.width69{
+    width: 69%;
+}
+
+.width100{
+    width: 100%;
+}

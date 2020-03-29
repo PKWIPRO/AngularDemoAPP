@@ -1,0 +1,34 @@
+<div class = "header-css">
+  <img src="/assets/header.PNG" alt="Header" />
+</div>
+<div class="body-css"></div>
+<div class = "cart-css" >
+  <a routerLink="../orders">My orders</a>
+  <button (click)="createOrder()" *ngIf="showCart">Create order</button>
+  <img src="/assets/cart.png" alt="Cart Icon" (click)="onShowCart()"/> <span class="cart-count-css" id="cart-count-css">{{cartList.length}}</span>
+</div>
+<h2 style="text-align:center" *ngIf="showCart">Cart List</h2>
+
+<div class="menu-css" *ngIf="!showCart" style="position: relative;width:30%;display:inline-block;vertical-align: top;">
+  <img src="/assets/menu.PNG" alt="Menu" />
+</div>
+<div class="card-list" id="cards" [ngClass]="{'width69': !showCart, 'width100': showCart}" >
+    <div id="products" *ngIf="!showCart">
+              <div class="card" *ngFor="let data of products">
+                  <img [src]="data.img" alt="Image Not Available" style="width:100%">
+                  <h2>{{data.name}}</h2>
+                  <p class="price">£{{data.price}}</p>
+                  <p>{{data.specification}}</p>
+                  <p><button (click)="onAddClick(data)">Add to Cart</button></p>
+              </div>
+    </div>
+    <div id="carts" *ngIf="showCart">
+        <div class="card" *ngFor="let data of cartList">
+          <img [src]="data.img" alt="Image Not Available" style="width:100%">
+          <h2>{{data.name}}</h2>
+          <p class="price">£{{data.price}}</p>
+          <p>{{data.specification}}</p>
+          <p><button (click)="onRemoveProduct(data)">Remove From Cart</button></p>
+        </div>
+    </div>
+</div>

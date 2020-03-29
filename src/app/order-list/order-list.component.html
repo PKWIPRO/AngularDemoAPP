@@ -1,0 +1,22 @@
+<div class = "header-css">
+    <img src="/assets/header.PNG" alt="Header" />
+</div>
+
+<div class="body-css"></div>
+
+<h2 style="text-align:center">Order List</h2>
+
+<div class="card-list" id="cards" >
+    
+    <div *ngFor="let order of orders">
+        
+        <h2 class="horizontal-line-css">Order Number: {{order.id}} </h2>
+        
+        <div class="card" *ngFor="let item of order.products">
+                <img [src]="item.img" alt="Image Not Available" style="width:100%">
+                <h2>{{item.name}}</h2>
+                <p class="price">£{{item.price}}</p>
+                <p>{{item.specification}}</p>            
+        </div>    
+    </div>
+</div>

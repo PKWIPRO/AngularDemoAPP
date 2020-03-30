@@ -7,7 +7,7 @@ files:
  #   destination: /tmp/codedeploy-deployment-staging-area/
 #hooks:
 #  ApplicationStop:
- #   - location: scripts/stop_application
+ #   - location: scripts/stop_applicationn
   #    timeout: 300
  # BeforeInstall:
   #  - location: scripts/install_dependencies

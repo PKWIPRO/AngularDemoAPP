@@ -5,12 +5,12 @@ files:
     destination: /var/www/html/dist
  # - source: /scripts/configure_http_port.xsl
  #   destination: //tmp/codedeploy-deployment-staging-area/
-#hooks:
+hooks:
 #  ApplicationStop:
  #   - location: scripts/stop_applicationn
   #    timeout: 300
- # BeforeInstall:
-  #  - location: scripts/install_dependencies
+  BeforeInstall:
+    - location: script/cleanup.sh
   #    timeout: 300
   #ApplicationStart:
    # - location: scripts/write_codedeploy_config.sh

@@ -32,13 +32,13 @@ export class CommonService{
     getOrderList():Observable<any>{
       
       
-        return this.http.get('http://btcanvas.wiprocms.com/api/v1/orders');
+        return this.http.get('http://localhost:8089/api/v1/orders');
     }
 
     postData(data: any): Observable<any> {
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
-      headers.append('Access-Control-Allow-Origin', '*');
-        return this.http.post("http://btcanvas.wiprocms.com/api/v1/orders",data,{headers:headers});
+      
+        return this.http.post("http://localhost:8089/api/v1/orders",data,{headers:headers});
     }
 }

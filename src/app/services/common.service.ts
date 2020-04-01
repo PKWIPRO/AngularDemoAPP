@@ -39,6 +39,6 @@ export class CommonService{
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
       
-        return this.http.post(environment.backendURL + '/api/v1/orders",data,{headers:headers});
+        return this.http.post(environment.backendURL + '/api/v1/orders',data,{headers:headers});
     }
 }

@@ -32,13 +32,13 @@ export class CommonService{
     getOrderList():Observable<any>{
       
       
-        return this.http.get('http://3.8.117.128:8089/api/v1/orders');
+        return this.http.get(environment.backendURL + '/api/v1/orders');
     }
 
     postData(data: any): Observable<any> {
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
       
-        return this.http.post("http://3.8.117.128:8089/api/v1/orders",data,{headers:headers});
+        return this.http.post(environment.backendURL + '/api/v1/orders",data,{headers:headers});
     }
 }

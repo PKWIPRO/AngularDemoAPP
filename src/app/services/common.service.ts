@@ -32,7 +32,7 @@ export class CommonService{
     getOrderList():Observable<any>{
       
       
-        return this.http.get('http://btcanvas.wiprocms.com/api/v1/orders');
+        return this.http.get('http://3.8.117.128:8089/api/v1/orders');
     }
 
     postData(data: any): Observable<any> {

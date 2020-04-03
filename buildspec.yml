@@ -1,0 +1,42 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+    - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://127.0.0.1:2375 --storage-driver=overlay2&
+	- echo Installing source NPM dependencies...
+    - npm install
+    - npm install -g @angular/cli
+    
+    runtime-versions:
+      docker: 18
+       
+    
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region eu-west-2)
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+  build:
+    commands:
+      - echo Build .completed on `date`
+      
+      - ng build
+  post_build:
+     commands:
+      
+       - echo Build started on `date`
+       - echo Building the Docker image...          
+       - docker build -t angular .
+       - ocker tag angular:latest 667811466675.dkr.ecr.eu-west-2.amazonaws.com/angular:$IMAGE_TAG
+       - echo Build completed on `date`
+       - echo Pushing the Docker image...
+       - docker push 667811466675.dkr.ecr.eu-west-2.amazonaws.com/angular:$IMAGE_TAG
+       - printf '[{"name":"order-app","imageUri":"%s"}]' 667811466675.dkr.ecr.eu-west-2.amazonaws.com/angular:$IMAGE_TAG > imagedefinitions.json
+       - cat imagedefinitions.json
+      
+
+artifacts:
+  files: imagedefinitions.json
+  

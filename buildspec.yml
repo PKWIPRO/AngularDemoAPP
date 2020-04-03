@@ -29,7 +29,7 @@ phases:
        - echo Build started on `date`
        - echo Building the Docker image...          
        - docker build -t angular .
-       - ocker tag angular:latest 667811466675.dkr.ecr.eu-west-2.amazonaws.com/angular:$IMAGE_TAG
+       - docker tag angular:latest 667811466675.dkr.ecr.eu-west-2.amazonaws.com/angular:$IMAGE_TAG
        - echo Build completed on `date`
        - echo Pushing the Docker image...
        - docker push 667811466675.dkr.ecr.eu-west-2.amazonaws.com/angular:$IMAGE_TAG

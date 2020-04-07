@@ -38,6 +38,7 @@ export class CommonService{
     postData(data: any): Observable<any> {
         var headers = new HttpHeaders();
         headers.append('Content-Type', 'application/json');
+      console.log(" Here ");
       
         return this.http.post('https://fhd3k9etyb.execute-api.eu-west-2.amazonaws.com/dev',data,{headers:headers});
     }
